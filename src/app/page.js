@@ -1,60 +1,63 @@
-'use client';
+"use client";
 import Image from "next/image";
 import Navbar from "./Component/Navbar/Navbar";
 import Hero from "./Component/Hero/Hero";
 import Search from "./Component/Search/Search";
 import ProductCard from "./Component/ProductCard/ProductCard";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import getProduct from "./Services/getProduct";
+import { rootUrl } from "./Urls/endpoint";
+import { limit5 } from "./Urls/urls";
+import Shiping from "./Component/Shiping/Shipcard/Shiping";
+import TitleandButton from "./Component/Catagory/TitleandButton";
+import CatagoryList from "./Component/Catagory/CatagoryList";
 export default function Home() {
-  let allData=[
-    {
-    imageAddress:'http://upload.wikimedia.org/wikipedia/commons/a/ae/An_Adidas_shoe.jpg',
-    productName:'Army Shoe',
-    types:'Hiking',
-    price:'30.50'
+    let [product, setproduct] = useState([]);
+    let getData = async () => {
+        let alldata = await getProduct(`${rootUrl}/${limit5}`);
+        setproduct(alldata);
+    };
+    useEffect(() => {
+        getData();
+    }, []);
+    return (
+        <div>
+            <Navbar />
+            <Hero />
+            <Search />
+            <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 space-x-2 mx-10 mt-10 h-auto">
+                {product &&
+                    product.map((it, i) => {
+                        return (
+                            <div key={i}>
+                                {i < 5 ? <ProductCard info={it} /> : ""}
+                            </div>
+                        );
+                    })}
+            </div>
 
-  },
-  {
-    imageAddress:'http://upload.wikimedia.org/wikipedia/commons/a/ae/An_Adidas_shoe.jpg',
-    productName:'Jim Shoe',
-    types:'Hiking',
-    price:'40.50'
-
-  },
-  {
-    imageAddress:'http://upload.wikimedia.org/wikipedia/commons/a/ae/An_Adidas_shoe.jpg',
-    productName:'Office Shoe',
-    types:'Hiking',
-    price:'90.50'
-
-  },
-  {
-    imageAddress:'http://upload.wikimedia.org/wikipedia/commons/a/ae/An_Adidas_shoe.jpg',
-    productName:'Army Shoe',
-    types:'Hiking',
-    price:'378'
-
-  },
-
-];
-let [product,setproduct]=useState(allData);
-  return (
-    <div>
-      <Navbar/>
-      <Hero/>
-      <Search/>
-      <div className="grid grid-cols-4 gap-2">
-      {
-        product && product.map((it,i)=>{
-          return <div key={i}>
-               <ProductCard info={it}/>
-          </div>
-        })
-      }
-     
-      </div>
-      
-    </div>
-  );
+            <div>
+                <Shiping />
+            </div>
+            <div className="mx-10">
+                <TitleandButton />
+            </div>
+            <div className="mx-10">
+                <CatagoryList />
+            </div>
+            <h1 className="text-center mt-5 font-extrabold text-2xl">
+                Celebrate This Summer
+            </h1>
+            <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 space-x-2 mx-10 mt-10 h-auto">
+                {product &&
+                    product.map((it, i) => {
+                        return (
+                            <div key={i}>
+                                <ProductCard info={it} />
+                            </div>
+                        );
+                    })}
+            </div>
+        </div>
+    );
 }
