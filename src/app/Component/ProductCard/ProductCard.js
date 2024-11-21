@@ -6,7 +6,7 @@ export default function ProductCard({ info }) {
             <div className="w-full h-full px-5 pt-5  ">
                 <div className="h-auto">
                     <img
-                        className="rounded-2xl h-[270px] w-[210px]"
+                        className="rounded-2xl h-[200px] w-[210px]"
                         src={info.image}
                         alt="No Image"
                     />
