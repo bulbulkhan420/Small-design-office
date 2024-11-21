@@ -25,8 +25,11 @@ export default function Navbar() {
             </div>
 
             <div className="flex flex-row justify-center gap-4 text-sm">
-                <div className="w-9 h-9 rounded-full border-2 flex justify-center items-center ">
+                <div className="w-9 h-9 rounded-full border-2 flex justify-center items-center relative ">
                     <CiLock />
+                    <span className="absolute flex justify-center items-center w-6 h-6 rounded-full text-white bg-bg-navbar -top-[30%] -right-[30%]">
+                        12
+                    </span>
                 </div>
                 <button className="px-4 py-2 rounded-full text-[12px] text-white bg-black">
                     Sign In
