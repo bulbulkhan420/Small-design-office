@@ -11,6 +11,7 @@ import { limit5 } from "./Urls/urls";
 import Shiping from "./Component/Shiping/Shipcard/Shiping";
 import TitleandButton from "./Component/Catagory/TitleandButton";
 import CatagoryList from "./Component/Catagory/CatagoryList";
+import Footer from "./Component/Footer/Footer";
 export default function Home() {
     let [product, setproduct] = useState([]);
     let getData = async () => {
@@ -25,7 +26,7 @@ export default function Home() {
             <Navbar />
             <Hero />
             <Search />
-            <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 space-x-2 mx-10 mt-10 h-auto">
+            <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-x-4 mx-10 mt-10  gap-y-4">
                 {product &&
                     product.map((it, i) => {
                         return (
@@ -48,16 +49,17 @@ export default function Home() {
             <h1 className="text-center mt-5 font-extrabold text-2xl">
                 Celebrate This Summer
             </h1>
-            <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 space-x-2 mx-10 mt-10 h-auto">
+            <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-x-4 gap-y-4 mx-10 mt-10 h-1/4">
                 {product &&
                     product.map((it, i) => {
                         return (
-                            <div key={i}>
+                            <div key={i} className="h-auto">
                                 <ProductCard info={it} />
                             </div>
                         );
                     })}
             </div>
+            <Footer />
         </div>
     );
 }

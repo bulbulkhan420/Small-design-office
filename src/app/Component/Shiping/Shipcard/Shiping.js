@@ -7,8 +7,8 @@ import {
 import ShipCard from "./ShipCard";
 export default function Shiping() {
     return (
-        <div className="w-full flex justify-center items-center pt-0 ">
-            <div className="px-10  flex w-3/4 h-[100px]  justify-center items-center">
+        <div className="w-full flex justify-center items-center pt-2 pb-2 ">
+            <div className="px-10  grid w-3/4 h-[100px] sm:grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-y-3">
                 <ShipCard
                     icon={<FaTruck />}
                     title={"Fast shipping"}

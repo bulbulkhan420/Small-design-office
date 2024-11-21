@@ -2,7 +2,7 @@ import React from "react";
 
 export default function TitleandButton() {
     return (
-        <div className="w-full h-48 flex flex-row items-center justify-between">
+        <div className="w-full h-24 flex flex-row items-center justify-between">
             <div className="flex   w-full items-center justify-start ">
                 <div className="text-left font-extrabold">
                     <span> Explore</span>

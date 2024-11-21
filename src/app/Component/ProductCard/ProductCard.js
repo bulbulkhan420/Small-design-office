@@ -2,16 +2,16 @@ import React from "react";
 import Image from "next/image";
 export default function ProductCard({ info }) {
     return (
-        <div className="h-3/4 w-full flex justify-center items-center">
-            <div className="w-full h-full px-5 pb-20 pt-5 rounded-2xl border-2 shadow-md">
-                <div className="h-5/6">
+        <div className="h-full w-full flex hover:shadow-bg-navbar transform duration-700 justify-center items-center border-2 shadow-md rounded-2xl">
+            <div className="w-full h-full px-5 pt-5  ">
+                <div className="h-auto">
                     <img
-                        className="rounded-2xl h-full w-full"
+                        className="rounded-2xl h-[270px] w-[210px]"
                         src={info.image}
                         alt="No Image"
                     />
                 </div>
-                <div className="h-1/4 flex justify-between items-center mt-1  py-1">
+                <div className="h-[150px] flex justify-between items-center mt-2  ">
                     <div className="flex flex-col space-y-1">
                         <div className="font-bold text-[14px]">
                             {info.title}

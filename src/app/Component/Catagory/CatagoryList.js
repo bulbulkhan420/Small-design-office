@@ -10,7 +10,7 @@ import {
 import CatagoryCard from "./Catagorycard/CatagoryCard";
 export default function CatagoryList() {
     return (
-        <div className="grid grid-cols-6 gap-x-4">
+        <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-x-6 gap-y-3">
             <CatagoryCard
                 icon={<FaSignHanging />}
                 title={"Fashion"}
