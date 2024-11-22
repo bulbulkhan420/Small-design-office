@@ -3,8 +3,8 @@ import {
     MdManageAccounts,
     FaTruck,
     HiBuildingStorefront,
-} from "../../../../IconReact/icon";
-import ShipCard from "./ShipCard";
+} from "../../../../Icons/icon";
+import ShipCard from "./shipCard";
 export default function Shiping() {
     return (
         <div className="w-full flex justify-center items-center pt-2 pb-2 ">

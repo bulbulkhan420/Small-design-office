@@ -1,5 +1,5 @@
 import React from 'react'
-import {GoSearch} from '../../../IconReact/icon'
+import {GoSearch} from '../../../Icons/icon'
 export default function Search() {
   return (
     <div className='h-1/5 flex justify-center items-center mt-10'>

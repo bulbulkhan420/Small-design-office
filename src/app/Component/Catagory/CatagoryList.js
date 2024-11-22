@@ -6,7 +6,7 @@ import {
     GiPostOffice,
     GiOpenedFoodCan,
     IoMdAirplane,
-} from "../../../IconReact/icon";
+} from "../../../Icons/icon";
 import CatagoryCard from "./Catagorycard/CatagoryCard";
 export default function CatagoryList() {
     return (

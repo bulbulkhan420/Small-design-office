@@ -1,37 +1,46 @@
 "use client";
 import Image from "next/image";
-import Navbar from "./Component/Navbar/Navbar";
-import Hero from "./Component/Hero/Hero";
-import Search from "./Component/Search/Search";
-import ProductCard from "./Component/ProductCard/ProductCard";
-import { useEffect, useState } from "react";
+import Navbar from "./Component/Navbar/navbar";
+import Hero from "./Component/Hero/hero";
+import Search from "./Component/Search/search";
+import ProductCard from "./Component/ProductCard/productCard";
+import { createContext, useEffect, useState } from "react";
 import getProduct from "./Services/getProduct";
-import { rootUrl } from "./Urls/endpoint";
+import { rootUrl } from "./Urls/Endpoint";
 import { limit5 } from "./Urls/urls";
-import Shiping from "./Component/Shiping/Shipcard/Shiping";
-import TitleandButton from "./Component/Catagory/TitleandButton";
-import CatagoryList from "./Component/Catagory/CatagoryList";
-import Footer from "./Component/Footer/Footer";
+import Shiping from "./Component/Shiping/Shipcard/shiping";
+import TitleandButton from "./Component/Catagory/titleandButton";
+import CatagoryList from "./Component/Catagory/catagoryList";
+import Footer from "./Component/Footer/footer";
+export const cardContext=createContext();
 export default function Home() {
+    let [cartItemlists,setcartItemlists]=useState([]);
+    
     let [product, setproduct] = useState([]);
+    let getCartItemLists=(value)=>{
+        cartItemlists.push(value);
+        setcartItemlists([...cartItemlists]);
+      }
+     
     let getData = async () => {
         let alldata = await getProduct(`${rootUrl}/${limit5}`);
         setproduct(alldata);
     };
     useEffect(() => {
         getData();
-    }, []);
+    }, [cartItemlists]);
     return (
-        <div>
+        <cardContext.Provider value={{size:cartItemlists.length}}>
+            <div>
             <Navbar />
             <Hero />
             <Search />
-            <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-x-4 mx-10 mt-10  gap-y-4">
+            <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-x-3 mx-10 mt-10  gap-y-4">
                 {product &&
                     product.map((it, i) => {
                         return (
                             <div key={i}>
-                                {i < 5 ? <ProductCard info={it} /> : ""}
+                                {i < 5 ? <ProductCard info={it} getCartItemLists={getCartItemLists} /> : ""}
                             </div>
                         );
                     })}
@@ -49,17 +58,19 @@ export default function Home() {
             <h1 className="text-center mt-5 font-extrabold text-2xl">
                 Celebrate This Summer
             </h1>
-            <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-x-4 gap-y-4 mx-10 mt-10 h-1/4">
+            <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-x-3 gap-y-4 mx-10 mt-10 h-1/4">
                 {product &&
                     product.map((it, i) => {
                         return (
                             <div key={i} className="h-auto">
-                                <ProductCard info={it} />
+                                <ProductCard info={it} getCartItemLists={getCartItemLists} />
                             </div>
                         );
                     })}
             </div>
             <Footer />
         </div>
+        </cardContext.Provider>
+       
     );
 }

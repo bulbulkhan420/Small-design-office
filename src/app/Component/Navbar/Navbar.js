@@ -1,6 +1,10 @@
-import React from "react";
-import { SiShopify, CiLock } from "../../../IconReact/icon";
+'use client';
+import React, { useContext } from "react";
+import { SiShopify, CiLock } from "../../../Icons/icon";
+import {cardContext} from '../../page'
 export default function Navbar() {
+
+    let size=useContext(cardContext)
     return (
         <div className="flex flex-row justify-between h-20 mx-10 items-center box-border">
             <div>
@@ -28,7 +32,7 @@ export default function Navbar() {
                 <div className="w-9 h-9 rounded-full border-2 flex justify-center items-center relative ">
                     <CiLock />
                     <span className="absolute flex justify-center items-center w-6 h-6 rounded-full text-white bg-bg-navbar -top-[30%] -right-[30%]">
-                        12
+                        {size.size}
                     </span>
                 </div>
                 <button className="px-4 py-2 rounded-full text-[12px] text-white bg-black">
