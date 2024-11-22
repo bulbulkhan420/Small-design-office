@@ -16,7 +16,7 @@ export const cardContext=createContext();
 export default function Home() {
     let [cartItemlists,setcartItemlists]=useState([]);
     
-    let [product, setproduct] = useState([]);
+    let [products, setproduct] = useState([]);
     let getCartItemLists=(value)=>{
         cartItemlists.push(value);
         setcartItemlists([...cartItemlists]);
@@ -36,8 +36,8 @@ export default function Home() {
             <Hero />
             <Search />
             <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-x-3 mx-10 mt-10  gap-y-4">
-                {product &&
-                    product.map((it, i) => {
+                {products &&
+                    products.map((it, i) => {
                         return (
                             <div key={i}>
                                 {i < 5 ? <ProductCard info={it} getCartItemLists={getCartItemLists} /> : ""}
@@ -59,8 +59,8 @@ export default function Home() {
                 Celebrate This Summer
             </h1>
             <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-x-3 gap-y-4 mx-10 mt-10 h-1/4">
-                {product &&
-                    product.map((it, i) => {
+                {products &&
+                    products.map((it, i) => {
                         return (
                             <div key={i} className="h-auto">
                                 <ProductCard info={it} getCartItemLists={getCartItemLists} />

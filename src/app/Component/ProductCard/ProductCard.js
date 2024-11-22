@@ -13,7 +13,7 @@ export default function ProductCard({ info,getCartItemLists }) {
                     <img
                         className="rounded-2xl h-[180px] w-[220px]"
                         src={info.image}
-                        alt="No Image"
+                        alt="Loading Product Image"
                     />
                 </div>
 
