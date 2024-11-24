@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import Navbar from "./Component/Navbar/navbar";
+import Navbar from "./Component/Navbar/navBarLg";
 import Hero from "./Component/Hero/hero";
 import Search from "./Component/Search/search";
 import ProductCard from "./Component/ProductCard/productCard";
@@ -12,6 +12,7 @@ import Shiping from "./Component/Shiping/Shipcard/shiping";
 import TitleandButton from "./Component/Catagory/titleandButton";
 import CatagoryList from "./Component/Catagory/catagoryList";
 import Footer from "./Component/Footer/footer";
+import NavBarSm from './Component/Navbar/navBarSm'
 export const cardContext=createContext();
 export default function Home() {
     let [cartItemlists,setcartItemlists]=useState([]);
@@ -20,6 +21,8 @@ export default function Home() {
     let getCartItemLists=(value)=>{
         cartItemlists.push(value);
         setcartItemlists([...cartItemlists]);
+
+        console.log(cartItemlists);
       }
      
     let getData = async () => {
@@ -32,10 +35,17 @@ export default function Home() {
     return (
         <cardContext.Provider value={{size:cartItemlists.length}}>
             <div>
+                <div></div>
+                <div className="md:hidden ">
+                <NavBarSm/>
+                </div>
+            <div className="hidden md:block" >
             <Navbar />
+            </div>
+          
             <Hero />
             <Search />
-            <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-x-3 mx-10 mt-10  gap-y-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-1 md:gap-x-3 mx-2 md:mx-10 mt-10 gap-y-2 md:gap-y-4">
                 {products &&
                     products.map((it, i) => {
                         return (
@@ -58,7 +68,7 @@ export default function Home() {
             <h1 className="text-center mt-5 font-extrabold text-2xl">
                 Celebrate This Summer
             </h1>
-            <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-x-3 gap-y-4 mx-10 mt-10 h-1/4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-1 md:gap-x-3 mx-2 md:mx-10 mt-10 gap-y-2 md:gap-y-4">
                 {products &&
                     products.map((it, i) => {
                         return (

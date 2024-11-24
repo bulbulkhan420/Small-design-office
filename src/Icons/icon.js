@@ -11,6 +11,7 @@ import { GiPostOffice } from "react-icons/gi";
 import { GiOpenedFoodCan } from "react-icons/gi";
 import { IoMdAirplane } from "react-icons/io";
 import { FaCartPlus } from "react-icons/fa6";
+import { FaBars } from "react-icons/fa6";
 export {
     CiLock,
     SiShopify,
@@ -24,5 +25,6 @@ export {
     GiPostOffice,
     GiOpenedFoodCan,
     IoMdAirplane,
-    FaCartPlus
+    FaCartPlus,
+    FaBars
 };

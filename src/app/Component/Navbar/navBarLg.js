@@ -4,7 +4,7 @@ import { SiShopify, CiLock } from "../../../Icons/icon";
 import {cardContext} from '../../page'
 export default function Navbar() {
 
-    let size=useContext(cardContext)
+    let size=useContext(cardContext);
     return (
         <div className="flex flex-row justify-between h-20 mx-10 items-center box-border">
             <div>
